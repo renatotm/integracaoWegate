@@ -1,5 +1,7 @@
 package br.com.cnaga.integracao.resources;
 
+import java.util.Collections;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,11 +21,10 @@ public class NewTransactionResource {
 		
 	
 	@PostMapping
-	public ResponseEntity<String> insert(@RequestBody NewTransactionDTO dto) {
+	public ResponseEntity<Object> insert(@RequestBody NewTransactionDTO dto) {
 		dto = service.insert(dto);
-		return ResponseEntity.ok()
-		        .header("status", "ok")
-		        .body("ok");
+		//return ResponseEntity.ok().header("status", "ok").body("ok");
+		return ResponseEntity.ok().body(Collections.singletonMap("status", "ok"));
 	}	
 	
 }
